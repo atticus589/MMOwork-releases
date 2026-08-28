@@ -7,7 +7,7 @@ source code here.
 
 1. Download **`launcher.zip`** from [the latest release](../../releases/latest)
 2. Unzip it somewhere you don't mind the game living — it will fill that folder
-3. Run **`Play MmoWork.bat`**
+3. Run **`MmoWork-Launcher.exe`**
 
 The first run downloads the game (about 70 MB) and starts it. After that the
 launcher checks for updates each time and downloads only what changed, which is
@@ -15,13 +15,17 @@ usually well under a megabyte.
 
 The server address is built in. There is nothing to configure.
 
-## If Windows or your antivirus complains
+## "Windows protected your PC"
 
-The launcher is a PowerShell script rather than a compiled program, and
-"a batch file that runs PowerShell that downloads a zip" is a shape that
-security software is reasonably suspicious of. Both files are plain text — 
-`launcher.ps1` is readable in Notepad if you'd like to see exactly what it does
-before running it.
+You will probably see this the first time. The launcher isn't signed with a
+code-signing certificate, and Windows warns about any unsigned program
+downloaded from the internet regardless of what it does.
+
+Click **More info**, then **Run anyway**.
+
+If you'd rather not take that on faith, the launcher is about 300 lines and does
+four things: ask this repository what the current build is, download it, check
+its SHA-256, and start the game.
 
 ## What gets installed
 
@@ -29,6 +33,12 @@ before running it.
 |---|---|
 | `MmoWork.exe` + `data_…` | the Godot engine and .NET runtime, ~181 MB unpacked |
 | `MmoWork.pck` | the game world |
-| `installed.json` | which build you're on, so updates can be skipped when nothing changed |
+| `installed.json` | which build you're on, so unchanged files aren't downloaded again |
 
 Your account and characters are **not** stored here — they live on the server.
+
+## Updating
+
+The launcher handles it. If it finds an update while the game is open it will
+say so and ask you to close it — Windows won't let a running program have its
+own files replaced.
