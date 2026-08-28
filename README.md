@@ -5,27 +5,24 @@ source code here.
 
 ## Playing
 
-1. Download **`launcher.zip`** from [the latest release](../../releases/latest)
-2. Unzip it somewhere you don't mind the game living — it will fill that folder
-3. Run **`MmoWork-Launcher.exe`**
+1. Download **[MmoWork-windows.zip](../../releases/download/runtime-3/MmoWork-windows.zip)** (about 70 MB)
+2. Unzip it somewhere you don't mind the game living
+3. Run **`MmoWork.exe`**
 
-The first run downloads the game (about 70 MB) and starts it. After that the
-launcher checks for updates each time and downloads only what changed, which is
-usually well under a megabyte.
+That's the whole install. There's no installer, no launcher, and nothing to
+configure — the server address is built in.
 
-The server address is built in. There is nothing to configure.
+## Updates
 
-## "Windows protected your PC"
+The game checks while the login screen is up. If there's a new build, an
+**Update** button appears at the bottom — press it and the game downloads what
+changed, installs it, and restarts itself.
 
-You will probably see this the first time. The launcher isn't signed with a
-code-signing certificate, and Windows warns about any unsigned program
-downloaded from the internet regardless of what it does.
+That download is normally well under a megabyte. The engine and .NET runtime
+are the bulk of the install and only change when the engine does, so ordinary
+updates only carry the map and the game code.
 
-Click **More info**, then **Run anyway**.
-
-If you'd rather not take that on faith, the launcher is about 300 lines and does
-four things: ask this repository what the current build is, download it, check
-its SHA-256, and start the game.
+Nothing updates behind your back, and nothing updates while you're playing.
 
 ## What gets installed
 
@@ -33,12 +30,12 @@ its SHA-256, and start the game.
 |---|---|
 | `MmoWork.exe` + `data_…` | the Godot engine and .NET runtime, ~181 MB unpacked |
 | `MmoWork.pck` | the game world |
-| `installed.json` | which build you're on, so unchanged files aren't downloaded again |
+| `installed.json` | which build you're on |
 
-Your account and characters are **not** stored here — they live on the server.
+Your account and characters are **not** stored here — they live on the server,
+so they survive reinstalling, and they aren't yours to lose.
 
-## Updating
+## Hosting your own
 
-The launcher handles it. If it finds an update while the game is open it will
-say so and ask you to close it — Windows won't let a running program have its
-own files replaced.
+`Host.bat` runs the same build as a dedicated server. An account on your server
+is yours alone; it doesn't exist on anyone else's.
